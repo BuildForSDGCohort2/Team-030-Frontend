@@ -6,7 +6,7 @@ include description here
 
 ## Type of change
 
- list changes you will be making here
+list changes you will be making here
  
 - one 
 - two
