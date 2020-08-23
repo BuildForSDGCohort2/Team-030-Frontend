@@ -20,4 +20,4 @@ Additionally, you can check your node console or browser console anytime react h
 
 
 ## Live Demo 
-Check out he live demo deployed on heroku https://agromart-frontend.herokuapp.com/
+Check out he live demo deployed on heroku https://agromart-farm.herokuapp.com/
