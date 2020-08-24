@@ -3,6 +3,7 @@ import { AuthService } from "../../services";
 
 export default () => {
  return dispatch => {
+  // Load first
   dispatch(new GetAuth());
   try {
    const service = new AuthService();
