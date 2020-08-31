@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const CustomizedLink = (props) => {
   const { to, title, style } = props;
   return (
     <Link
-      to={to}
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-        ...style,
-      }}
+     exact
+     to={to}
+     style={{
+      textDecoration: "none",
+      color: "inherit",
+      ...style,
+     }}
     >
       {title}
     </Link>
