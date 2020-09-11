@@ -38,7 +38,7 @@ import { authorizeUser } from "../../../store/actions/authActions";
 import config from "../../../utils/config";
 
 // Material UI Styling
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flex: 1,
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MyCard = (props) => {
+const MyCard = props => {
   const { classes, setView, type, checked, zoom } = props;
 
   return (
@@ -192,7 +192,7 @@ const MyCard = (props) => {
   );
 };
 
-const MyCardSm = (props) => {
+const MyCardSm = props => {
   const { setView, type, checked, zoom } = props;
 
   return (
@@ -298,7 +298,8 @@ function Register(props) {
     } catch (e) {
       if (e.response) {
         if (e.response.data) {
-          setMsg(`Form is not complete`);
+          console.log(e.response.data);
+          setMsg(e.response.data.response);
           setMsgType("error");
           setSnackBarOpen(true);
           return setIsLoading(false);
@@ -388,7 +389,7 @@ function Register(props) {
                       Register as
                     </Typography>
                     <div className={classes.mycards_sm}>
-                      {items.map((item) => (
+                      {items.map(item => (
                         <MyCardSm
                           checked={true}
                           key={item.id}
@@ -402,7 +403,7 @@ function Register(props) {
                   </>
                 ) : (
                   <div className={classes.mycards}>
-                    {items.map((item) => (
+                    {items.map(item => (
                       <MyCard
                         checked={true}
                         key={item.id}
