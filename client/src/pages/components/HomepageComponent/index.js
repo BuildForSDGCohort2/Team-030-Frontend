@@ -7,18 +7,18 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import Slide from "@material-ui/core/Slide";
+import Zoom from "@material-ui/core/Zoom";
 
 // Custom Componennts
 import AppBar from "../../../components/layout/AppBar";
 import Link from "../../../components/Link";
 import Cards from "./Cards";
 import ThirdBody from "./ThirdBody";
-// import FourthBody from "./FourthBody";
-import Slide from "@material-ui/core/Slide";
-import Zoom from "@material-ui/core/Zoom";
+import Footer from "./Footer";
 
 // Materal UI Styling
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
   },
@@ -148,10 +148,10 @@ const useStyles = makeStyles((theme) => ({
       padding: "30px 0",
     },
   },
-  fourthBody: {},
+  Footer: {},
 }));
 
-const Home = (props) => {
+const Home = props => {
   const classes = useStyles();
   const { isAuthenticated } = props;
 
@@ -202,16 +202,17 @@ const Home = (props) => {
       </div>
 
       <div className={classes.thirdBody}>
-        {" "}
-        <ThirdBody />{" "}
+        <ThirdBody />
       </div>
 
-      <div className={classes.fourthBody}>{/* <FourthBody /> */}</div>
+      <div className={classes.Footer}>
+        <Footer />
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
