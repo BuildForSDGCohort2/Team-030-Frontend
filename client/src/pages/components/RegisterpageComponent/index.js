@@ -277,7 +277,15 @@ function Register(props) {
       userType,
     };
 
-    // return setIsLoading(false);
+    if (body.password !== body.conPassword) {
+      setMsg(`Passwords do not match`);
+      setMsgType("error");
+      setSnackBarOpen(true);
+      return setIsLoading(false);
+    }
+
+    // Delete the conPassword key
+    delete body.conPassword;
 
     try {
       const KEYS = config();

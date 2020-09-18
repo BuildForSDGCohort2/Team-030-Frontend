@@ -14,7 +14,7 @@ import { logout } from "../../../store/actions/authActions";
 import BigScreenButtonGroup from "./BigScreenButtonGroup";
 import SmallScreenButtonGroup from "./SmallScreenButtonGroup";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -74,11 +74,11 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 };
 
-const ElevateAppBar = (props) => {
+const ElevateAppBar = props => {
   const classes = useStyles();
   const { isAuthenticated, user } = props;
 
-  const firstName = user.fullName ? user.fullName.split("")[0] : "";
+  const firstName = user.fullName ? user.fullName.split(" ")[0] : "";
 
   return (
     <React.Fragment>
@@ -108,7 +108,7 @@ const ElevateAppBar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
 });
