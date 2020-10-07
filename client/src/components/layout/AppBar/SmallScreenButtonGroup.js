@@ -64,9 +64,13 @@ const DropDown = ({
       onClose={handleClose}
       TransitionComponent={Fade}
     >
-      <MenuItem onClick={handleClose}>Home</MenuItem>
+      <MenuItem>
+        <Link to="/" title="Home" />
+      </MenuItem>
       <MenuItem onClick={handleClose}>Categories</MenuItem>
-      <MenuItem onClick={handleClose}>Market / Mart</MenuItem>
+      <MenuItem>
+        <Link to="/market" title="Market / Mart" />
+      </MenuItem>
       <MenuItem onClick={handleClose}>Contacts</MenuItem>
       {isAuthenticated && (
         <MenuItem>

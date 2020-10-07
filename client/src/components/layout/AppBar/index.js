@@ -55,12 +55,23 @@ function ElevationScroll(props) {
       style: { color: "#FFF", background: "rgba(18, 107, 22, 0.8)" },
     });
 
+  if (props.white) {
+    return React.cloneElement(children, {
+      elevation: trigger ? 4 : 0,
+
+      style: trigger
+        ? { color: "#FFF", background: "rgba(18, 107, 22, 0.88)" }
+        : { color: "#FFF", background: "#ffffff00" },
+      // color: trigger ? "secondary" : "transparent",
+    });
+  }
+
   return React.cloneElement(children, {
     elevation: trigger ? 4 : 0,
 
     style: trigger
       ? { color: "#FFF", background: "rgba(18, 107, 22, 0.88)" }
-      : { color: "#000000DE", background: "#ffffff0d" },
+      : { color: "#000000DE", background: "#ffffff00" },
     // color: trigger ? "secondary" : "transparent",
   });
 }

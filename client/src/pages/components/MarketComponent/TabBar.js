@@ -1,110 +1,96 @@
 import React from "react";
 import clsx from "clsx";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-
-import MenuIcon from "@material-ui/icons/Menu";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
+import { Divider } from "@material-ui/core";
+import Badge from "@material-ui/core/Badge";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1,
-    margin: "20px 70px",
+    margin: 20,
+    padding: 20,
+    display: "flex",
+    flex: 1,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "start",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 20,
+      flexDirection: "column",
+      marginLeft: -10,
+    },
   },
 
-  appbar: {},
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
+    marginRight: 30,
+    float: "left",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 15,
+      fontSize: 20,
+      flex: 1,
+      textAlign: "left",
     },
+  },
+
+  wrap_1: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "start",
+  },
+
+  wrap_2: {
+    display: "flex",
+    flex: 1,
+    float: "right",
   },
   white: {
-    color: "white",
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
+    color: "black",
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ number }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="sticky" className={classes.appbar}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            className={clsx(classes.menuButton, classes.white)}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+    <>
+      <Paper elevation={0} className={classes.grow}>
+        <div className={classes.wrap_1}>
           <Typography
             className={clsx(classes.title, classes.white)}
-            variant="h6"
+            variant="h4"
             noWrap
           >
-            Dummy Market Data
+            Market Data{" "}
           </Typography>
-          <div className={clsx(classes.search, classes.white)}>
-            <div className={clsx(classes.searchIcon, classes.white)}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+          <Badge
+            badgeContent={number}
+            color="secondary"
+            style={{ marginRight: 10 }}
+          />
+        </div>
+
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          size="small"
+          className={classes.wrap_2}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Paper>
+
+      <Divider />
+    </>
   );
 }

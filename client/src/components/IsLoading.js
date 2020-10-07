@@ -27,7 +27,7 @@ export default function SimpleBackdrop(props) {
       <Backdrop className={classes.backdrop} open={true} onClick={() => {}}>
         <CircularProgress
           color="inherit"
-          size={props.iconSize ? props.iconSize : 333}
+          size={props.iconSize ? props.iconSize : 150}
         />
       </Backdrop>
     </>

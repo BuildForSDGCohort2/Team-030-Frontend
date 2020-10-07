@@ -2,16 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { logout } from "../../../store/actions/authActions";
 
-import DashboardLayout from "./components/DashboardLayout";
-import HomeComponent from "./components/HomeComponent";
-import MyFarmsComponent from "./components/MyFarmsComponent";
+import DashboardLayout from "./farmers.components/DashboardLayout";
+import HomeComponent from "./farmers.components/HomeComponent";
+import MyFarmsComponent from "./farmers.components/MyFarmsComponent";
+
+import ConsumerComponent from "./consumers.component";
 
 function Dashboard(props) {
   const { user, isAuthenticated, logout } = props;
   const [active, setActive] = React.useState("My Farms");
 
-  return (
-    <>
+  const { role } = user;
+
+  if (role === "farm") {
+    return (
       <DashboardLayout
         isAuthenticated={isAuthenticated}
         user={user}
@@ -22,8 +26,9 @@ function Dashboard(props) {
         {active === "Home" && <HomeComponent user={user} />}
         {active === "My Farms" && <MyFarmsComponent user={user} />}
       </DashboardLayout>
-    </>
-  );
+    );
+  }
+  return <ConsumerComponent />;
 }
 
 const mapStateToProps = state => ({
